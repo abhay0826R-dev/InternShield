@@ -7,11 +7,54 @@
 </head>
 <body>
     <div id="container">
-        <h1>ListClean</h1>
-        <div>
-            <form onsubmit="addjob(event)">
-                <input type="text" placeholder="Blacklist">
-            </form>
+
+        <div id="header">
+            <div class="titleLogo">
+                <div id="logo">
+                    <img src="../images/logo.svg" id="logo"/>
+                </div>
+                <h1>ListClean</h1>
+            </div>
+            <div id="active-container">
+                <h3>ACTIVE</h3>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="extension-info">
+                <h5><span id="blue-text">Active Protection:</span> Automatically hiding posts with blocked keywords</h5>
+            </div>
+
+            <div id="input-area">
+                <img src="../images/search.svg" />
+                <input type="text" placeholder="Block a keyword or a company.. "/>
+                <button>+</button>
+            </div>
+
+            <div id="blocked-list">
+                <div id="blocked-list-heading">
+                    <h5>BLOCKED TERMS</h5>
+                    <h6>0</h6>
+                </div>
+            <ul id="blocked-keywords">
+                <li class="keyword-item">
+                    <span>unpaid internship</span>
+                    <button class="delete-btn" aria-label="Delete">
+                        <img src="../images/delete.svg" alt="" />
+                    </button>
+                </li>
+                <li class="keyword-item">
+                    <span>exposure</span>
+                    <button class="delete-btn" aria-label="Delete">
+                        <img src="../images/delete.svg" alt="" />
+                    </button>
+                </li>
+            </ul>
+            </div>
         </div>
     </div>
 </body>

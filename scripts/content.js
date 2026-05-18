@@ -1,7 +1,7 @@
 
 function removeInternships() {
     let removed_internships_array = []
-    let remove_internship_array = ["Across The Globe", "Zdminds", "She Can Foundation", "InAmigos Foundation"]
+    let remove_internship_array = ["Across The Globe", "Zdminds", "She Can Foundation", "InAmigos Foundation", "NayePankh Foundation"]
 
     let x = document.querySelectorAll(".individual_internship")
     x.forEach(elem => {

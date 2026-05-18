@@ -1,14 +1,36 @@
 body {
     height: fit-content;
     width: fit-content;
-    background-color: #00171F;
+    background-color: none;
     color: #FEE9E1;
-    padding: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+#header {
+    background-color: #020618;
+    width: 330px;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+#active-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#active-container h3 {
+    color: #a3b3ff;
 }
 
 #container {
-    height: full;
-    width: full;
+    height: 500px;
+    width: 350px;
+    background-color: #f8fafc;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -19,12 +41,195 @@ h1 {
     white-space: nowrap;
 }
 
-input {
-    background-color: #FEE9E1;
-    color: #00171F;
+.titleLogo {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.titleLogo img {
+    width: 25px;
+    height: 25px;
+}
+
+.titleLogo h1 {
+    color: #d8d9dc;
+}
+
+#logo {
+    background-color: #11133b;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+#blue-text {
+    color: blue;
+    font-weight: bold;
+}
+
+#extension-info {
+    color: #5f5ca2;
+    background-color: #E7EEFF;
+    font-size: 19px;
+    margin: 5px 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    line-height: 1;
+    display: flex;
+}
+
+#extension-info h5 {
+    margin: 0;
+}
+
+#input-area {
+    width: full;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    gap: 7px;
+    margin: 10px 10px;
+    border-radius: 10px;
+}
+
+#input-area img {
+    height: 20px;
+    width: 20px;
+}
+
+#input-area button {
+    border-radius: 5px;
+    padding: 5px;
     font-size: 25px;
+    font-weight: bold;
+    color: #94a3b8;
+    background-color: #e2e8f0;
+    border: none;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#input-area input {
+    flex: 1;
+    background-color: transparent;
+    color: #00171F;
+    font-size: 20px;
     font-weight: bold;
     width: 150px;
     height: 20px;
     padding: 5px;
+    border: none;
+    outline: none;
+}
+
+/* checkbox */
+/* The switch - the box around the slider */
+.switch {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  border: 2px solid #615fff;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: #314158;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.2em;
+  width: 1.2em;
+  left: 0.2em;
+  bottom: 0.2em;
+  background-color: white;
+  border-radius: inherit;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.switch input:checked + .slider {
+  box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
+  border: 2px solid #0974f1;
+  background-color: #615fff;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.5em);
+}
+
+#blocked-list-heading {
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 5px 10px 0px 10px;
+}
+
+#blocked-list-heading h5 {
+    color: #4c5b72;
+    font-size: 23px;
+    margin: 0;
+}
+
+#blocked-list-heading h6 {
+    color: #4c5b72;
+    font-size: 23px;
+    margin: 0;
+}
+
+#blocked-list ul {
+    background-color: blue;
+    margin: 0 10px 10px 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+#blocked-list ul li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+#blocked-list ul li button {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#blocked-list ul li button img {
+    width: 25px;
+    height: 25px;
+}
+
+#blocked-keywords img {
+    width: 10px;
+    height: 10px;
 }
