@@ -2,7 +2,7 @@ body {
     height: fit-content;
     width: fit-content;
     background-color: none;
-    color: #FEE9E1;
+    color: black;
     padding: 0;
     margin: 0;
 }
@@ -28,7 +28,8 @@ body {
 }
 
 #container {
-    height: 500px;
+    height: fit-content;
+    max-height: 500px;
     width: 350px;
     background-color: #f8fafc;
     display: flex;
@@ -73,7 +74,7 @@ h1 {
     background-color: #E7EEFF;
     font-size: 19px;
     margin: 5px 10px;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border-radius: 20px;
     line-height: 1;
     display: flex;
@@ -85,7 +86,7 @@ h1 {
 
 #input-area {
     width: full;
-    padding: 5px 15px;
+    padding: 9px 5px 5px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,6 +94,12 @@ h1 {
     gap: 7px;
     margin: 10px 10px;
     border-radius: 10px;
+    transition: border-color 0.4s ease-out;
+    border: transparent 1px solid;
+}
+
+#input-area:focus-within {
+    border-color: #0974f1;
 }
 
 #input-area img {
@@ -113,13 +120,20 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
 }
 
+#input-area button:hover {
+    color: #615fff;
+    background-color: #cbd5e1;
+}
+
+/* INPUT TO BLOCK */
 #input-area input {
     flex: 1;
     background-color: transparent;
     color: #00171F;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     width: 150px;
     height: 20px;
@@ -179,57 +193,125 @@ h1 {
 }
 
 #blocked-list-heading {
-    background-color: red;
+    background-color: #fbfcfd;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10px;
+    padding: 5px 15px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin: 5px 10px 0px 10px;
 }
 
+/* BLOCKED TERMS */
 #blocked-list-heading h5 {
     color: #4c5b72;
-    font-size: 23px;
+    font-size: 17px;
     margin: 0;
 }
 
+/* BLOCKED TERMS COUNT */
 #blocked-list-heading h6 {
     color: #4c5b72;
-    font-size: 23px;
+    font-size: 20px;
+    font-weight: normal;
     margin: 0;
+    background-color: rgb(213, 214, 215);
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+#blocked-list {
+    box-shadow: 0 0 5px #d3d3d3;
+    margin: 10px 10px;
 }
 
 #blocked-list ul {
-    background-color: blue;
+    background-color: white;
     margin: 0 10px 10px 10px;
     font-size: 20px;
     display: flex;
     flex-direction: column;
     list-style-type: none;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    height: 220px;
+    overflow-y: auto;
 }
 
 #blocked-list ul li {
     display: flex;
     justify-content: space-between;
     margin: 5px 0;
+    align-items: center;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    padding: 5px;
+    border-radius: 10px;
 }
 
+#blocked-list ul li:hover {
+    background-color: #e2e8f0;
+}
+
+.keyword-item span {
+    font-size: 17px;
+}
+
+/* DELETE BUTTON ON UL LI */
 #blocked-list ul li button {
     width: 35px;
     height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    background-color: none;
+    border: none;
 }
 
-#blocked-list ul li button img {
+#blocked-list ul li button svg {
     width: 25px;
     height: 25px;
+    fill: #ccd7e3;
+    transition: fill 0.2s ease;
+}
+#blocked-list ul li button svg:hover {
+    fill: #fb4750; 
 }
 
 #blocked-keywords img {
     width: 10px;
     height: 10px;
 }
+
+footer {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+/* Settings button */
+.Settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.Settings img {
+    height: 20px;
+    width: 20px;
+}
+
+.Settings span {
+    font-size: 16px;
+    color: darkgray;
+}
+
