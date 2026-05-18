@@ -37,3 +37,17 @@ PRODUCT/
 │   └── content.js          # Independent DOM-injected background MutationObserver runtime
 ├── manifest.json           # Extension foundational configuration manifest (v3)
 └── README.md               # Product documentation manual
+```
+
+## 🚀 Installation & Local Development
+
+# Prerequisites :
+ - Google Chrome, Brave, or any Chromium-based browser.
+
+# Steps to Load Locally
+- Clone or download this repository to your local development environment.
+- Launch your browser and navigate to the Extensions management terminal (chrome://extensions).
+- Toggle the Developer mode switch located in the upper right-hand corner of the page.
+- Click the Load unpacked button visible in the top-left toolbar area.
+- Select the root PRODUCT directory containing the manifest.json configuration file.
+- The extension is now actively loaded into your browser context and ready for operational execution.
