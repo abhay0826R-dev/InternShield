@@ -1,6 +1,6 @@
 {
-    "name" : "ScamShield",
-    "description" : "Base Level Extension",
+    "name" : "ListClean",
+    "description" : "removes job internships you don't wanna see! easily blacklist them through extension popup",
     "version" : "1.0",
     "manifest_version" : 3,
     "action" : {
