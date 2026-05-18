@@ -7,6 +7,8 @@ function removeInternships() {
     for (let i=0; i<50; i++)
     {
         let x = document.querySelector(".individual_internship")
+        console.log(x)
+        console.log(x.innerHTML)
         if (x.innerHTML.includes(remove_internship_array)) {
             removed_internships_array.push(x)
             x.remove()
