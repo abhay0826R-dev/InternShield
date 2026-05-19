@@ -333,3 +333,60 @@ footer {
     color: darkgray;
 }
 
+.hidden {
+    display: none !important;
+}
+
+#content {
+    position: relative;
+}
+
+#site-warning-overlay {
+    position: absolute;
+
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #00171F; */
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    backdrop-filter: blur(2px);
+}
+
+#centered-warning-message {
+    height: fit-content;
+    width: 65%;
+    background-color: #00171F;
+    padding: 10px 5px 10px 20px;
+    color: #aeb5bf;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#centered-warning-message {
+    font-size: 15px;
+}
+
+.info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* The Circle */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0076FF; 
+    border-radius: 50%;    
+    
+    /* The 'i' Inside */
+    color: #0076FF;    
+    font-family: serif;    
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;     
+}
