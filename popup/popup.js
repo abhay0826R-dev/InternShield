@@ -29,11 +29,18 @@ const overlayWarningReason = document.getElementById("overlay-warning-reason")
 const inputKeyword = document.getElementById("input-keyword")
 const blockedKeywordsList = document.getElementById("blocked-keywords")
 const addBtn = document.getElementById("add-btn")
+const blockedTermsCountEl = document.getElementById("blocked-terms-count")
+updateBlockedCount()
+
+function updateBlockedCount() {
+    blockedTermsCountEl.innerText = blockedKeywordsList.childElementCount
+}
 
 blockedKeywordsList.addEventListener("click", function(event) {
     const deletebtn = event.target.closest(".delete-btn")
     if (!deletebtn) return;
     deletebtn.closest(".keyword-item").remove()
+    updateBlockedCount()
 })
 
 // input -> Enter and Plus Button function
@@ -59,6 +66,7 @@ function addKeyword() {
                     </li>`
     blockedKeywordsList.insertAdjacentHTML("afterbegin", newli)
     inputKeyword.value = ""
+    updateBlockedCount()
     }
 }
 
