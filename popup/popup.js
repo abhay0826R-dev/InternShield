@@ -1,3 +1,13 @@
+const activeCheckbox = document.getElementById("activeCheckBox")
+const activeText = document.getElementById("active-state-text")
+const overlayWarning = document.getElementById("site-warning-overlay")
+const overlayWarningReason = document.getElementById("overlay-warning-reason")
+const inputKeyword = document.getElementById("input-keyword")
+const blockedKeywordsList = document.getElementById("blocked-keywords")
+const addBtn = document.getElementById("add-btn")
+const blockedTermsCountEl = document.getElementById("blocked-terms-count")
+
+updateBlockedCount()
 
 function addjob(event) {
     event.preventDefault()
@@ -21,16 +31,6 @@ function extensionToggleOn() {
     activeText.classList.add("red-activeText")
     activeText.classList.remove("blue-activeText")
 }
-
-const activeCheckbox = document.getElementById("activeCheckBox")
-const activeText = document.getElementById("active-state-text")
-const overlayWarning = document.getElementById("site-warning-overlay")
-const overlayWarningReason = document.getElementById("overlay-warning-reason")
-const inputKeyword = document.getElementById("input-keyword")
-const blockedKeywordsList = document.getElementById("blocked-keywords")
-const addBtn = document.getElementById("add-btn")
-const blockedTermsCountEl = document.getElementById("blocked-terms-count")
-updateBlockedCount()
 
 function updateBlockedCount() {
     blockedTermsCountEl.innerText = blockedKeywordsList.childElementCount
