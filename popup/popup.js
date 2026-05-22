@@ -7,14 +7,44 @@ const blockedKeywordsList = document.getElementById("blocked-keywords")
 const addBtn = document.getElementById("add-btn")
 const blockedTermsCountEl = document.getElementById("blocked-terms-count")
 
+let BlockedListDefault = ["InAmigos Foundation", "Unpaid", "Fundraising"]
+let BlockedList = []
+
+async function getBlockedListLocal() {
+    let result = await chrome.storage.local.get("BlockedList")
+    let BlockedListLocal = result.BlockedList || BlockedListDefault
+    return BlockedListLocal
+}
+
+async function init() {
+    BlockedList = await getBlockedListLocal()
+    addBlockedListLocal()
+}
+
+init()
 updateBlockedCount()
+
+
+// adds array to chrome 
+async function addBlockedListLocal() {
+    chrome.storage.local.set(
+        {"BlockedList" : BlockedList}
+    )
+    getBlockedListLocal()
+    console.log(BlockedList)
+}
+
 
 function addjob(event) {
     event.preventDefault()
     console.log("Works")
 }
 
+// extension OFF
 function extensionToggleOff() {
+    console.log(BlockedList)
+
+    // change Text
     overlayWarning.classList.add("hidden")
     activeText.innerText = "ACTIVE"
 
@@ -23,7 +53,10 @@ function extensionToggleOff() {
     activeText.classList.add("blue-activeText")
 }
 
+// Extension ON
 function extensionToggleOn() {
+
+    // change Text
     overlayWarning.classList.remove("hidden")
     activeText.innerText = "INACTIVE"
 
@@ -36,6 +69,7 @@ function updateBlockedCount() {
     blockedTermsCountEl.innerText = blockedKeywordsList.childElementCount
 }
 
+// DELETE BUTTON
 blockedKeywordsList.addEventListener("click", function(event) {
     const deletebtn = event.target.closest(".delete-btn")
     if (!deletebtn) return;
@@ -50,14 +84,17 @@ inputKeyword.addEventListener("keydown", function(event) {
     }
 })
 
+// event listener for plus + button next to input
 addBtn.addEventListener("click", function() {
     addKeyword()
 })
 
+// ADDS STUFF TO KEYWORD LIST
 function addKeyword() {
-    if (inputKeyword.value.trim() !== "") {
+    const keyValue = inputKeyword.value.trim()
+    if (keyValue !== "") {
     let newli = `<li class="keyword-item">
-                        <span>${inputKeyword.value.trim()}</span>
+                        <span>${keyValue}</span>
                         <button class="delete-btn" aria-label="Delete">
                             <svg class="delete-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4V4zm2 2h6V4H9v2zM6.074 8l.857 12H17.07l.857-12H6.074zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1z" />
@@ -65,8 +102,10 @@ function addKeyword() {
                         </button>
                     </li>`
     blockedKeywordsList.insertAdjacentHTML("afterbegin", newli)
+    BlockedList.push(keyValue)
     inputKeyword.value = ""
     updateBlockedCount()
+    addBlockedListLocal()
     }
 }
 

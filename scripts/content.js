@@ -1,7 +1,7 @@
 
-function removeInternships() {
-    let removed_internships_array = []
-    let remove_internship_array = ["Across The Globe", "Zdminds", "She Can Foundation", "InAmigos Foundation", "NayePankh Foundation","Research", "Cyber", "Quality Analyst", "Crypto", "Data Analyst", "Basti", "ML", "Wordpress"]
+async function removeInternships() {
+    let result = await chrome.storage.local.get("BlockedList")
+    let remove_internship_array = result.BlockedList
 
     let x = document.querySelectorAll(".individual_internship")
     x.forEach(elem => {
@@ -10,7 +10,7 @@ function removeInternships() {
             console.log("got 1")
         }
     })
-
 }
 
 removeInternships()
+setInterval(removeInternships, 3000);
