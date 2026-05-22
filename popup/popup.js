@@ -11,6 +11,7 @@ let BlockedListDefault = ["InAmigos Foundation", "Unpaid", "Fundraising"]
 let BlockedList = []
 
 async function getBlockedListLocal() {
+    if (!chrome.runtime?.id) return
     let result = await chrome.storage.local.get("BlockedList")
     let BlockedListLocal = result.BlockedList || BlockedListDefault
     return BlockedListLocal
