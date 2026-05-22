@@ -18,11 +18,10 @@ async function getBlockedListLocal() {
 
 async function init() {
     BlockedList = await getBlockedListLocal()
-    addBlockedListLocal()
 
-    // BlockedList.map((key, idx) => {
-    //     addKeywordUI(key)
-    // })
+    BlockedList.map((key, idx) => {
+        addKeywordUI(key)
+    })
 }
 
 init()
@@ -30,11 +29,10 @@ updateBlockedCount()
 
 
 // adds array to chrome 
-async function addBlockedListLocal() {
+async function updateBlockedListLocal() {
     chrome.storage.local.set(
         {"BlockedList" : BlockedList}
     )
-    getBlockedListLocal()
     console.log(BlockedList)
 }
 
@@ -77,6 +75,11 @@ function updateBlockedCount() {
 blockedKeywordsList.addEventListener("click", function(event) {
     const deletebtn = event.target.closest(".delete-btn")
     if (!deletebtn) return;
+
+    const deleteValue = deletebtn.parentNode.querySelector("span").innerText
+    BlockedList = BlockedList.filter(item => item != deleteValue)
+    updateBlockedListLocal()
+
     deletebtn.closest(".keyword-item").remove()
     updateBlockedCount()
 })
@@ -97,6 +100,7 @@ function verifyKeywordAndAdd() {
     const keyValue = inputKeyword.value.trim()
     if (keyValue !== "") {  
         addKeywordUI(keyValue)
+        addKeywordLocal(keyValue)
         inputKeyword.value = ""
     }
 }
@@ -104,7 +108,7 @@ function verifyKeywordAndAdd() {
 // ADDS STUFF TO KEYWORD LIST
 function addKeywordUI(keyword) {
     let newli = `<li class="keyword-item">
-                        <span>${keyword}</span>
+                        <span class="keyword-item-title">${keyword}</span>
                         <button class="delete-btn" aria-label="Delete">
                             <svg class="delete-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4V4zm2 2h6V4H9v2zM6.074 8l.857 12H17.07l.857-12H6.074zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1z" />
@@ -112,9 +116,14 @@ function addKeywordUI(keyword) {
                         </button>
                     </li>`
     blockedKeywordsList.insertAdjacentHTML("afterbegin", newli)
-    BlockedList.push(keyword)
+    // BlockedList.push(keyword)
     updateBlockedCount()
-    addBlockedListLocal()
+    // updateBlockedListLocal()
+}
+
+function addKeywordLocal(keyword) {
+    BlockedList.push(keyword)
+    updateBlockedListLocal()
 }
 
 // overlay blur warning 
